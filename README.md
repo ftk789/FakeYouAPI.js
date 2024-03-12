@@ -1,5 +1,5 @@
 <div align="center">
-    <p><a href="https://fakeyou.js.org"><img src="https://user-images.githubusercontent.com/82254221/181195262-bd1ca7bb-9788-4155-acb5-1e5d072436f4.png" width="640"/></a></p>
+    <p><a href="https://fakeyou.js.org"><img src="./icon.png" width="640"/></a></p>
 	<p><a href="https://discord.gg/H72KFXm"><img src="https://img.shields.io/static/v1?label=DISCORD&message=FakeYou&color=7289da&style=for-the-badge" alt="Discord" /></a> <a href="https://www.npmjs.com/package/fakeyou.js"><img src="https://img.shields.io/npm/v/fakeyou.js?label=NPM&color=red&style=for-the-badge" alt="NPM" /></a> <a href="https://github.com/leunamcrack/fakeyou.js"><img src="https://img.shields.io/github/license/leunamcrack/fakeyou.js?style=for-the-badge" alt="GITHUB" /></a>
 	</p>
 </div>
