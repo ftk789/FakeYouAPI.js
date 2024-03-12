@@ -4,7 +4,7 @@
 	</p>
 </div>
 
-> **fakeyou.js is a powerful [Node.js](https://nodejs.org) module that allows you to interact with the [FakeYouAPI](https://docs.fakeyou.com) easily.**
+> **fakeyouapi.js is a powerful [Node.js](https://nodejs.org) module that allows you to interact with the [FakeYouAPI](https://docs.fakeyou.com) easily. (An updated version of FakeYou.js )**
 
 ## Features
 * [Login or use your token](#login-or-use-your-token)
