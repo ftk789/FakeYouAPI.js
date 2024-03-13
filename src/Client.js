@@ -8,6 +8,7 @@ const LeaderBoard = require('./structures/LeaderBoard.js');
 const FakeYouError = require('./util/FakeYouError');
 const ClientUser = require('./structures/ClientUser.js');
 const Model = require('./structures/Model');
+const TTIResult = require('./structures/TTIResult');
 const User = require('./structures/User');
 
 class Client {
@@ -16,6 +17,7 @@ class Client {
         this.results = new ResultManager(this);
         this.categories = new CategoryManager(this);
         this.models = new ModelManager(this);
+        this.TTIResult = new TTIResult(this);
         this.isReady = false;
         this.usernameOrEmail = options.usernameOrEmail;
         Object.defineProperty(this, 'session', {value:{}});
@@ -61,6 +63,19 @@ class Client {
         if(!findModel) throw new FakeYouError(this, Constants.Error.modelNotFound(model));
         return findModel.request(text);
     };
+
+
+    async makeTTI(model, text) {
+        if (!model) throw new FakeYouError(this, Constants.Error.optionNotFound('model'));
+        if (!text) throw new FakeYouError(this, Constants.Error.optionNotFound('text'));
+        if (!Util.checkType(text, 'string')) throw new FakeYouError(this, Constants.Error.invalidType('text', 'string'));
+        return this.TTIResult.TTIRequest(model, text);
+    };
+
+    async getTTIModels() {
+        return this.TTIResult.getTTIModelsWeights();
+    };
+    
     async leaderboard() {
         const getData = await Requester.__getData(Constants.URL.base+'/leaderboard', Util.__getHeaders(this));
         return new LeaderBoard(this, getData);

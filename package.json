@@ -1,6 +1,6 @@
 {
   "name": "fakeyouapi.js",
-  "version": "1.1.7",
+  "version": "1.1.9",
   "description": "A powerful library for interacting with the FakeYouAPI easily ( An updated version of FakeYou.js",
   "main": "index.js",
   "keywords": [
@@ -19,6 +19,7 @@
   "author": "ftk789",
   "license": "Apache-2.0",
   "dependencies": {
+    "axios": "^1.6.7",
     "superagent": "^8.1.2",
     "uuid": "^8.3.2"
   }

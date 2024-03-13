@@ -10,7 +10,8 @@
 
 - [Login or use your token](#login-or-use-your-token)
 - [Search models](#search-models)
-- [Make TTS requests](#make-tts-request)
+- [Make TTS requests( Text to Speech )](#make-tts-request)
+- [Make TTI requests ( Text to Image )](#make-tti-request)
 - [LeaderBoard](#leaderboard)
 - [Edit client user](#edit-client-user)
 - [Get all data from an entity](#get-all-data-from-an-entity)
@@ -29,7 +30,7 @@ const fy = new FakeYou.Client({
 await fy.start(); //required
 ```
 
-### Search models
+### Search TTS models
 
 ```js
 let models = fy.searchModel("mario");
@@ -45,6 +46,60 @@ let model = fy.searchModel("mario").first();
 if (model) {
   await model.request("A cool text to speech");
 }
+```
+
+### Make TTI Request
+
+```js
+// You can search for weights by using the method below:
+let weights = await fy.getTTIModels();
+// This will return an array of all the available models, You log it and pick one like how you pick from an array.
+
+// the format of the array is like this:
+/*
+[
+  ...
+  {
+    title: Weight_Title, weight_token: Weight_Token
+  }
+  ...
+]
+*/
+
+let response = await fy.makeTTI(weights[8], "A cool text to image prompt", LoraModel, NegativeText, seed, imageShape, sampler, CGF_Scale, SamplesNumber, BatchCount);
+
+/* 
+
+The current variables are optional and not:
+
+
+
+LoraModel (string), NegativeText (string), seed (integer), imageShape (string), sampler (string), CGF_Scale (integer), SamplesNumber (integer), BatchCount (integer) .
+
+You can obtain those values and inputs from FakeYou's website.
+
+Inserting a wrong format of a integer value or a text, Will result in an error.
+
+*/
+
+//or
+
+let response = await fy.makeTTI(weights[4], "A cool text to image prompt");
+
+
+/*
+
+An example of a response:
+
+[
+  'https://storage.googleapis.com/vocodes-public/media/0/3/4/2/m/0342m88c1vqjt24zd5qpat5gns270bdr/image_0342m88c1vqjt24zd5qpat5gns270bdr.png',
+  'https://storage.googleapis.com/vocodes-public/media/y/9/t/k/j/y9tkj5nt40q3cqgaseje1h0zg46agwf8/image_y9tkj5nt40q3cqgaseje1h0zg46agwf8.png',
+  'https://storage.googleapis.com/vocodes-public/media/h/c/s/1/d/hcs1d36papj6gknxdb8s80g4z35ndwdg/image_hcs1d36papj6gknxdb8s80g4z35ndwdg.png',
+  'https://storage.googleapis.com/vocodes-public/media/f/d/j/y/k/fdjykhmrnyqj3jjjyxy4trp6dvde6qfy/image_fdjykhmrnyqj3jjjyxy4trp6dvde6qfy.png'
+]
+
+*/
+
 ```
 
 ### LeaderBoard
